@@ -1,0 +1,51 @@
+{
+  "manifest_version": 2,
+  "name": "allplaatsplus",
+  "version": "1.0.0",
+  "description": "Block ads, filter listings by title/description, and enable dark mode on Marktplaats. Ported from the mitmproxy scripts.",
+  "author": "miku",
+  "permissions": [
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "tabs",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.marktplaats.nl/*",
+        "*://*.marktplaats.com/*",
+        "*://*.2ememain.be/*",
+        "*://*.2ememain.fr/*",
+        "*://*.2dehands.be/*",
+        "*://*.2dehands.com/*",
+        "*://*.leboncoin.fr/*",
+        "*://*.kleinanzeigen.de/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "allplaatsplus",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": ["page.js"],
+  "content_security_policy": "script-src 'self'; object-src 'self'"
+}

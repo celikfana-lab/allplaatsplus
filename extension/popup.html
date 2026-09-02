@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1 id="title">allplaatsplus</h1>
+
+  <section>
+    <label class="switch">
+      <input type="checkbox" id="blockAds">
+      <span class="slider"></span>
+      <span class="label">Block ads</span>
+    </label>
+    <p class="hint">Removes sponsored / featured / admarkt listings (network + DOM).</p>
+  </section>
+
+  <section>
+    <label class="switch">
+      <input type="checkbox" id="blockByTitle">
+      <span class="slider"></span>
+      <span class="label">Block by title</span>
+    </label>
+    <div class="tags" id="titleTags"></div>
+    <input type="text" id="titleInput" placeholder="Add word (press Enter)">
+    <p class="hint">Hide listings whose title contains any of these words.</p>
+  </section>
+
+  <section>
+    <label class="switch">
+      <input type="checkbox" id="blockByDescription">
+      <span class="slider"></span>
+      <span class="label">Block by description</span>
+    </label>
+    <div class="tags" id="descTags"></div>
+    <input type="text" id="descInput" placeholder="Add word (press Enter)">
+    <p class="hint">Hide listings whose description contains any of these words.</p>
+  </section>
+
+  <section>
+    <details>
+      <summary>More options</summary>
+      <label class="switch">
+        <input type="checkbox" id="darkMode">
+        <span class="slider"></span>
+        <span class="label">Dark mode</span>
+      </label>
+      <label class="switch" id="row-hdImages">
+        <input type="checkbox" id="hdImages">
+        <span class="slider"></span>
+        <span class="label">HD images</span>
+      </label>
+      <p class="hint" id="hint-hdImages">Loads full-resolution photos (image rule &rarr; $_omega).</p>
+      <label class="switch">
+        <input type="checkbox" id="hideBlocked">
+        <span class="slider"></span>
+        <span class="label">Hide instead of remove</span>
+      </label>
+      <label class="switch" id="row-aggressiveIdBlock">
+        <input type="checkbox" id="aggressiveIdBlock">
+        <span class="slider"></span>
+        <span class="label">Kill itemId starting with "a"</span>
+      </label>
+      <input type="text" id="citiesInput" placeholder="Cities, comma separated">
+      <input type="text" id="countriesInput" placeholder="Countries, comma separated">
+      <p class="hint">Block listings from these cities / countries.</p>
+    </details>
+  </section>
+
+  <section id="stats">
+    <h2 id="statsTitle">Blocked on this page</h2>
+    <div class="statrow"><span class="stat-k">Total blocked</span><span class="stat-v" id="statTotal">0</span></div>
+    <div class="statrow"><span class="stat-k">Traffic that was ads</span><span class="stat-v" id="statTraffic">0%</span></div>
+    <div class="statrow"><span class="stat-k">Listings were ads</span><span class="stat-v" id="statListings">0</span></div>
+    <div class="statrow"><span class="stat-k">DOM removed</span><span class="stat-v" id="statDom">0%</span></div>
+    <div class="statrow"><span class="stat-k">JS blocked</span><span class="stat-v" id="statJs">0%</span></div>
+  </section>
+
+  <div class="footer">
+    <button id="reset">Reset defaults</button>
+    <span id="status"></span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
