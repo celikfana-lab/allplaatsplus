@@ -97,6 +97,8 @@ cookies only insofar as it firmly does not. It removes sponsored garbage from li
 salvages the pixels for art. It is for sale (seven hundred stars or one small hyperreal pigeon).
 It does not respect your time because it IS your time. It is time.
 
+> **note:** boosters are still there since they are normal users, ask us to remove it if you really want it gone
+
 > If you are reading this line, you have successfully traversed the chaos. Take this moment.
 > Close the README. Touch grass (preferably the pixel kind). And remember: the sigma pigeons
 > are still up there, on the roof, watching. They are always watching. They are checking your
