@@ -128,6 +128,10 @@ var BLOCKED_HOSTS = [
   "faas.marktplaats.nl",
   "4422a912521b.edge.sdk.awswaf.com",
   // leboncoin.fr ad/consent/tracking infrastructure
+  "cdn.cookielaw.org",                 // OneTrust CookieLaw consent + tracking
+  "static-assets.vinted.com",          // Vinted static ad/tracking assets
+  "logs-ingress.svc.vinted.com",       // Vinted logging/telemetry ingress
+  "metrics.vinted.lt",                 // Vinted metrics/telemetry
   "sdk.privacy-center.org",            // Didomi consent + tracking
   "cdn.hubvisor.io",                   // Liberty / Hubvisor ad engine
   "securepubads.g.doubleclick.net",    // Google GPT
@@ -165,7 +169,19 @@ var BLOCKED_PATTERNS = [
   /kleinanzeigen\.de\/liberty\//,
   /kleinanzeigen\.de\/gdpr\//,
   /kleinanzeigen\.de\/Rv_8dlvBZ\//,
-  /kleinanzeigen\.de\/Rv_8dlvBZ\/jCNKdNU\/Wg\/EYEcz48LGDzQQ8L55Y\/SXktOwsLYAQ\/Qg4KA3xJ\/aQwC/
+  /kleinanzeigen\.de\/Rv_8dlvBZ\/jCNKdNU\/Wg\/EYEcz48LGDzQQ8L55Y\/SXktOwsLYAQ\/Qg4KA3xJ\/aQwC/,
+  // Vinted "gtg" (get the grading? / tracking / consent) path — block the path
+  // only, not the whole vinted.nl domain.
+  /vinted\.(nl|com|fr|de|co\.uk)\/[A-Za-z0-9_%/-]*gtg\//i,
+  // Vinted metrics telemetry endpoint (`https://metrics.vinted.lt/web/v4`) —
+  // block this path only, keep the rest of metrics.vinted.lt reachable.
+  /metrics\.vinted\.lt\/web\/v4\//,
+  // Vinted API telemetry ingestion endpoint (`https://api.vinted.nl/j3r4zw/v1/consume`)
+  // — block this path only, keep the rest of api.vinted.nl reachable.
+  /api\.vinted\.(nl|com|fr|de|lt|lv|ee)\/j3r4zw\/v1\/consume/,
+  // Vinted promoted-closets ad endpoint (`https://www.vinted.nl/api/v2/promoted_closets`)
+  // — block this path only, keep the rest of vinted.nl reachable.
+  /www\.vinted\.(nl|com|fr|de|lt|lv|ee)\/api\/v2\/promoted_closets/
 ];
 
 function hostMatches(host) {
@@ -240,10 +256,18 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://*.2dehands.com/*",
       "*://*.leboncoin.fr/*",
       "*://*.kleinanzeigen.de/*",
+      "*://www.vinted.nl/gtg/*",
+      "*://static-assets.vinted.com/*",
+      "*://metrics.vinted.lt/web/v4/*",
+      "*://metrics.vinted.lt/*",
+      "*://logs-ingress.svc.vinted.com/*",
+      "*://api.vinted.nl/j3r4zw/v1/consume*",
+      "*://www.vinted.nl/api/v2/promoted_closets*",
       "*://*.hzcdn.io/*",
       "*://4422a912521b.edge.sdk.awswaf.com/*",
       "*://*.privacy-center.org/*",
       "*://*.hubvisor.io/*",
+      "*://*.cookielaw.org/*",
       "*://*.doubleclick.net/*",
       "*://*.googlesyndication.com/*",
       "*://*.googletagmanager.com/*",

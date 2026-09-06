@@ -4,6 +4,16 @@
   "version": "1.0.0",
   "description": "Block ads, filter listings by title/description, and enable dark mode on Marktplaats. Ported from the mitmproxy scripts.",
   "author": "miku",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "allplaatsplus@celikfana-lab.github.io",
+      "strict_min_version": "88.0",
+      "data_collection_permissions": {
+        "required": ["none"],
+        "optional": []
+      }
+    }
+  },
   "permissions": [
     "storage",
     "webRequest",
