@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "allplaatsplus",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Block ads, filter listings by title/description, and enable dark mode on Marktplaats. Ported from the mitmproxy scripts.",
   "author": "miku",
   "browser_specific_settings": {
@@ -35,7 +35,20 @@
         "*://*.2dehands.be/*",
         "*://*.2dehands.com/*",
         "*://*.leboncoin.fr/*",
-        "*://*.kleinanzeigen.de/*"
+        "*://*.kleinanzeigen.de/*",
+        "*://*.vinted.nl/*",
+        "*://*.vinted.com/*",
+        "*://*.vinted.fr/*",
+        "*://*.vinted.de/*",
+        "*://*.vinted.lt/*",
+        "*://*.vinted.lv/*",
+        "*://*.vinted.ee/*",
+        "*://*.vinted.pl/*",
+        "*://*.vinted.co.uk/*",
+        "*://*.vinted.cz/*",
+        "*://*.vinted.es/*",
+        "*://*.vinted.it/*",
+        "*://*.vinted.at/*"
       ],
       "js": ["content.js"],
       "run_at": "document_start",
